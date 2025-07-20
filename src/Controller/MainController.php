@@ -16,8 +16,9 @@ class MainController extends AbstractController
             'name' => 'USS LeafyCruiser (NCC-0001)',
             'class' => 'Garden',
             'captain' => 'Jean-Luc Pickles',
-            'status' => 'under construction'
+            'status' => 'under construction',
         ];
+
         return $this->render('main/homepage.html.twig', [
             'numberOfStarships' => $starshipCount,
             'myShip' => $myShip,
