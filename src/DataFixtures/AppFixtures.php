@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Starship;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use App\Model\StarshipStatusEnum;
+use App\Entity\StarshipStatusEnum;
 
 class AppFixtures extends Fixture
 {
