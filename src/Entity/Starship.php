@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\StarshipStatusEnum;
 use App\Repository\StarshipRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
 use Gedmo\Mapping\Annotation\Timestampable;
@@ -134,26 +135,34 @@ class Starship
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?DateTimeImmutable
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
+    public function setUpdatedAt(?DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(?DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function checkIn(?DateTimeImmutable $arrivedAt = null): static
+    {
+        $this->setArrivedAt($arrivedAt ?? new DateTimeImmutable('now'));
+        $this->setStatus(StarshipStatusEnum::WAITING);
 
         return $this;
     }
